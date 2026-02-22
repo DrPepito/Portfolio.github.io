@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacts | Portfolio Zakaria Boschetti</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo-container">
+    <img src="https://media.newyorker.com/photos/5a95a5b13d9089123c9fdb7e/1:1/w_3289,h_3289,c_limit/Petrusich-Dont-Mess-with-the-Birds.jpg" class="profile-pic">
+  </div>
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="contact.html">Contacts</a></li>
+      <li><a href="fichiers.html">Fichiers</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+<section class="contact">
+  <div id="notif" class="notif">✔ Votre mail a été préparé dans Gmail !</div>
+
+
+  <h1>Me Contacter</h1>
+
+  <form id="mailForm">
+    <label for="nom">Nom</label>
+    <input type="text" id="nom" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" required></textarea>
+
+    <button type="submit">Envoyer via Gmail</button>
+  </form>
+
+  <div class="socials">
+    <a href="mailto:zakaria.boschetti@gmail.com"><i class="fa fa-envelope"></i></a>
+    <a href="https://www.linkedin.com/in/zakaria-boschetti-625745305/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.instagram.com/zak_shot_/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+</section>
+
+
+<script>
+  const form = document.getElementById('mailForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(); // Empêche l'envoi classique du formulaire
+    
+    const nom = encodeURIComponent(document.getElementById('nom').value);
+    const email = encodeURIComponent(document.getElementById('email').value);
+    const message = encodeURIComponent(document.getElementById('message').value);
+
+    const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=zakaria.boschetti@gmail.com&su=Contact depuis le portfolio&body=Nom:%20${nom}%0AEmail:%20${email}%0AMessage:%20${message}`;
+    window.open(gmailLink, '_blank');
+  });
+</script>
+
+<footer class="site-footer">
+  <p>© 2025 Zakaria Boschetti</p>
+</footer>
+
+</body>
+</html>
