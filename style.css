@@ -17,13 +17,11 @@ body {
 
 
 
-
 @media (max-width: 768px) {
-  .btn-group {
-    flex-direction: column;
+  body {
+    min-width: 1024px;
   }
 }
-
 
 
 
