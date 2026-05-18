@@ -513,29 +513,44 @@ body {
 
 .btn-group {
   display: flex;
-  gap: 12px;
+  gap: 15px;
   align-items: center;
 }
 
+/* suppression du style lien (violet / bleu / visité) */
+.btn-icon,
+.btn-icon:visited,
+.btn-icon:link,
+.btn-icon:active {
+  text-decoration: none;
+  color: white;
+}
+
+/* bouton icône */
 .btn-icon {
-  width: 45px;
-  height: 45px;
+  width: 60px;        /* agrandi */
+  height: 60px;       /* agrandi */
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+
+  border-radius: 12px;
   background: #1f2937;
-  color: white;
-  font-size: 18px;
-  text-decoration: none;
+
+  font-size: 26px;    /* ICÔNE PLUS GROSSE */
   transition: 0.2s;
 }
 
+/* hover propre */
 .btn-icon:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   background: #374151;
 }
 
+/* sécurité anti style navigateur */
+.btn-icon i {
+  pointer-events: none;
+}
 
 
 
