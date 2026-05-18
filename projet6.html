@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Accéléromètre VHDL | Zakaria Boschetti</title>
-<link rel="stylesheet" href="../style.css">
+<title>Communication WiFi ESP32 | Zakaria Boschetti</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="site-header">
@@ -13,76 +13,99 @@
   </div>
   <nav class="navbar">
     <ul>
-      <li><a href="../index.html">Accueil</a></li>
-      <li><a href="../projets.html">Projets</a></li>
-      <li><a href="../contact.html">Contacts</a></li>
-      <li><a href="../fichiers.html">Fichiers</a></li>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="contact.html">Contacts</a></li>
+      <li><a href="fichiers.html">Fichiers</a></li>
     </ul>
   </nav>
 </header>
 
 <section class="project-wrapper">
-  <h1 class="project-title">Accéléromètre 3 Axes — VHDL sur FPGA</h1>
+  <h1 class="project-title">Communication WiFi ESP32 — Module Drone de Surveillance</h1>
   <div class="project-content">
-    <img src="../fpga accelerometre.jpg" alt="Accéléromètre VHDL FPGA" class="project-main-img">
+
+    <img src="echange_communication_wifi_esp32.jpeg" alt="Communication WiFi entre deux ESP32" class="project-main-img">
 
     <p class="intro">
-      Réalisation d'un accéléromètre 3 axes (X, Y, Z) entièrement décrit en VHDL et implémenté 
-      sur FPGA. Le système acquiert les données d'accélération, les traite en logique câblée 
-      et les restitue en temps réel sur la sortie.
+      Développement d'un module de communication sans fil entre deux cartes ESP32, 
+      constituant la brique de base du projet d'essaim de drones de surveillance. 
+      L'ESP32 émetteur crée son propre réseau WiFi (Access Point) et transmet des données 
+      via UDP à l'ESP32 récepteur, qui les affiche en temps réel sur un écran OLED.
     </p>
 
     <h2>🎯 Objectifs du Projet</h2>
     <ul class="project-list">
-      <li>Acquérir les données d'un accéléromètre 3 axes via interface SPI ou I2C.</li>
-      <li>Décrire l'ensemble du traitement en VHDL (logique câblée, sans processeur).</li>
-      <li>Afficher les valeurs X, Y, Z en temps réel.</li>
-      <li>Synthétiser et implémenter le design sur FPGA.</li>
+      <li>Établir une communication WiFi directe entre deux ESP32 sans routeur externe.</li>
+      <li>Transmettre des données en temps réel via protocole UDP (faible latence).</li>
+      <li>Afficher les données reçues sur un écran OLED SSD1306 128×64.</li>
+      <li>Valider l'architecture réseau pour le futur essaim de drones de surveillance.</li>
     </ul>
 
-    <h2>📌 Matériel Utilisé
+    <h2>📌 Matériel Utilisé</h2>
     <ul class="project-list">
-      <li>FPGA (Xilinx ou Altera)</li>
-      <li>Capteur accéléromètre 3 axes (ADXL345 ou MPU-6050)</li>
-      <li>Interface SPI / I2C</li>
-      <li>Affichage 7 segments ou UART</li>
+      <li>2× ESP32 DevKit</li>
+      <li>2× Écran OLED SSD1306 128×64 (I2C — SDA GPIO 21, SCL GPIO 22)</li>
+      <li>Alimentation USB 5V</li>
     </ul>
 
-    <h2>🛠️ Langage & Outils</h2>
+    <h2>🛠️ Architecture Réseau</h2>
     <ul class="project-list">
-      <li>VHDL — description matérielle complète</li>
-      <li>Vivado / Quartus pour la synthèse et l'implémentation</li>
-      <li>Simulation des composants avec testbench VHDL</li>
-      <li>Protocole SPI/I2C décrit en VHDL</li>
+      <li><strong>ESP32 #1 (Émetteur)</strong> — crée un Access Point WiFi (<code>ESP32_RESEAU</code>), IP fixe <code>192.168.4.1</code></li>
+      <li><strong>ESP32 #2 (Récepteur)</strong> — se connecte au réseau, obtient l'IP <code>192.168.4.2</code></li>
+      <li>Protocole <strong>UDP</strong> sur port <code>1234</code> — transmission toutes les 3 secondes</li>
+      <li>Communication I2C avec les écrans OLED (bibliothèque Adafruit SSD1306)</li>
+    </ul>
+
+    <h2>💻 Fonctionnement du Code</h2>
+
+    <h3>ESP32 #1 — Émetteur</h3>
+    <ul class="project-list">
+      <li>Crée un réseau WiFi local via <code>WiFi.softAP()</code></li>
+      <li>Effectue un calcul (extensible à des données capteurs réels)</li>
+      <li>Formate le résultat en chaîne (<code>"42+58=100"</code>) et l'envoie via <code>udp.beginPacket()</code></li>
+      <li>Affiche le résultat et l'état d'envoi sur l'OLED</li>
+    </ul>
+
+    <h3>ESP32 #2 — Récepteur</h3>
+    <ul class="project-list">
+      <li>Se connecte au réseau créé par l'ESP32 #1 via <code>WiFi.begin()</code></li>
+      <li>Écoute en permanence le port UDP avec <code>udp.parsePacket()</code></li>
+      <li>Lit et décode le message reçu, l'affiche sur l'OLED en temps réel</li>
     </ul>
 
     <h2>📷 Images du Projet</h2>
     <div class="project-gallery">
-      <a href="../fpga accelerometre.jpg" class="lightbox-link">
-        <img src="../fpga accelerometre.jpg" alt="FPGA vue générale">
-      </a>
-      <a href="../fpga accelerometre.jpg" class="lightbox-link">
-        <img src="../fpga accelerometre.jpg" alt="Schéma RTL">
-      </a>
-      <a href="../fpga accelerometre.jpg" class="lightbox-link">
-        <img src="../fpga accelerometre.jpg" alt="Simulation testbench">
+      <a href="echange_communication_wifi_esp32.jpeg" class="lightbox-link">
+        <img src="echange_communication_wifi_esp32.jpeg" alt="Vue des deux ESP32">
       </a>
     </div>
 
-    <h2>⚙️ Fonctionnement</h2>
+    <h2>⚙️ Schéma de Communication</h2>
     <p>
-      Le contrôleur SPI/I2C décrit en VHDL initialise le capteur puis lit cycliquement 
-      les registres de données X, Y et Z. Les valeurs brutes sont converties en unités 
-      physiques (mg) par un bloc de mise à l'échelle câblé. Les résultats sont transmis 
-      en temps réel via UART ou affichés sur les 7 segments de la carte FPGA.
+      L'ESP32 #1 génère un réseau WiFi autonome sans infrastructure externe. 
+      L'ESP32 #2 s'y connecte et reçoit les paquets UDP. Cette architecture 
+      peer-to-peer est directement transposable à une communication drone-station sol 
+      ou drone-drone dans le cadre du projet d'essaim de surveillance.
+      Le protocole UDP a été choisi pour sa faible latence, essentielle 
+      dans un contexte de commande temps réel de drones.
+    </p>
+
+    <h2>🔗 Lien avec le Projet Drone</h2>
+    <p>
+      Ce module constitue la couche de communication du 
+      <a href="projet7.html">projet d'essaim de drones de surveillance</a>. 
+      Il sera étendu pour transmettre des données de télémétrie (position, vitesse, 
+      état batterie) et des commandes de vol entre les drones et la station de contrôle.
     </p>
 
     <h2>📄 Téléchargements & Liens</h2>
     <div class="downloads">
-      <a href="#" class="btn">📁 Télécharger le code VHDL</a>
-      <a href="#" class="btn">📊 Rapport technique (PDF)</a>
-      <a href="#" class="btn">🐙 GitHub</a>
+      <a href="codesenderwifi.cpp" class="btn">📁 Code Émetteur (codesenderwifi.cpp)</a>
+      <a href="code_receiver_wifi.cpp" class="btn">📁 Code Récepteur (code_receiver_wifi.cpp)</a>
+      <a href="https://github.com/DrPepito" class="btn">🐙 GitHub</a>
     </div>
+
   </div>
 </section>
 
