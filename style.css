@@ -525,6 +525,27 @@ body {
   text-decoration: none;
   color: white;
 }
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* chaque ligne */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;   /* évite superposition */
+  gap: 12px;
+}
+
+/* lien reset */
+.btn-icon,
+.btn-icon:visited,
+.btn-icon:link,
+.btn-icon:active {
+  text-decoration: none;
+  color: white;
+}
 
 /* bouton */
 .btn-icon {
@@ -536,25 +557,21 @@ body {
   background: #1f2937;
   border-radius: 10px;
 
-  font-size: 18px;
+  font-size: 16px;
+  white-space: nowrap; /* empêche le texte de casser bizarrement */
+
   transition: 0.2s;
 }
 
-/* icône plus grande */
 .btn-icon i {
-  font-size: 22px;
+  font-size: 20px;
 }
 
-/* hover */
 .btn-icon:hover {
   transform: translateY(-2px);
   background: #374151;
 }
 
-/* texte */
-.btn-icon span {
-  font-weight: 500;
-}
 
 
 
