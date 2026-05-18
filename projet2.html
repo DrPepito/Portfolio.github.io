@@ -3,14 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Soufflerie Numérique TIPE | Zakaria Boschetti</title>
+<title>TIPE - Drone hybride & aérodynamique | Zakaria Boschetti</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <header class="site-header">
   <div class="logo-container">
     <img src="https://media.newyorker.com/photos/5a95a5b13d9089123c9fdb7e/1:1/w_3289,h_3289,c_limit/Petrusich-Dont-Mess-with-the-Birds.jpg" class="profile-pic">
   </div>
+
   <nav class="navbar">
     <ul>
       <li><a href="index.html">Accueil</a></li>
@@ -22,74 +25,115 @@
 </header>
 
 <section class="project-wrapper">
-  <h1 class="project-title">Modélisation d'Ailes de drone & Soufflerie  </h1>
+
+  <h1 class="project-title">
+    Modélisation aérodynamique d’un drone hybride à ailes fixes
+  </h1>
+
   <div class="project-content">
+
     <img src="souflerie.jpg" alt="Soufflerie numérique" class="project-main-img">
 
     <p class="intro">
-      Simulation numérique de l'écoulement d'air autour de profils d'ailes afin d'analyser 
-      la portance et la traînée. Étude d'optimisation énergétique d'un drone hybride combinant 
-      multi-rotors et ailes fixes, réalisée dans le cadre du TIPE en CPGE PSI.
+      Ce TIPE étudie l’amélioration du rendement énergétique d’un drone hybride combinant
+      multirotors et ailes fixes inclinées. L’objectif est d’analyser l’impact de la portance
+      additionnelle générée par les ailes sur la consommation énergétique globale du système.
     </p>
 
-    <h2> Objectifs du Projet</h2>
-    <ul class="project-list">
-      <li>Simuler numériquement l'écoulement d'air autour de profils NACA particulierement celui symétrique.</li>
-      <li>Calculer et analyser la portance et la traînée en fonction de l'angle d'attaque.</li>
-      <li>Optimiser la géométrie d'aile pour un drone hybride multi-rotors / ailes fixes.</li>
-      <li>Comparer les résultats simulés avec les données théoriques.</li>
-    </ul>
-
-    <h2> Outils & Technologies</h2>
-    <ul class="project-list">
-      <li>Python (simulation, traitement des données, visualisation)</li>
-      <li>C++ pour la gestion des  Servomoteurs pour profilage de l aile(etude réel du flux d'air ) et des moteurs (Architecture éléctrique et de puissance)</li>
-      <li>Méthode des panneaux pour la modélisation aérodynamique</li>
-      <li>Matplotlib / NumPy / SciPy</li>
-      <li>SOLIDWORKS pour l'étude théorique et ses limites</li>
-    </ul>
-
-    <h2>🛠️ Bibliothèques Python</h2>
-    <ul class="project-list">
-      <li><code>numpy</code> — calculs matriciels et vectoriels</li>
-      <li><code>matplotlib</code> — visualisation des écoulements et courbes</li>
-      <li><code>scipy</code> — résolution des systèmes d'équations</li>
-    </ul>
-
-    <h2> Images du Projet</h2>
-    <div class="project-gallery">
-      <a href="souflerie.jpg" class="lightbox-link">
-        <img src="souflerie.jpg" alt="Simulation écoulement">
-      </a>
-      <a href="souflerie.jpg" class="lightbox-link">
-        <img src="souflerie.jpg" alt="Profil NACA">
-      </a>
-      <a href="souflerie.jpg" class="lightbox-link">
-        <img src="souflerie.jpg" alt="Courbe portance/traînée">
-      </a>
-    </div>
-
-    <h2>⚙️ Fonctionnement</h2>
+    <h2>Problématique</h2>
     <p>
-      Le programme génère un maillage autour du profil d'aile choisi, puis applique la méthode 
-      des panneaux pour calculer la distribution de pression et en déduire la portance et la traînée. 
-      Les résultats sont visualisés sous forme de champs de vitesse et de courbes de coefficient 
-      aérodynamique en fonction de l'angle d'attaque. L'optimisation du drone hybride compare 
-      plusieurs configurations géométriques pour minimiser la consommation énergétique en vol.
+      Comment optimiser le rendement énergétique d’un drone hybride équipé d’ailes fixes en
+      agissant sur sa configuration aérodynamique ?
     </p>
 
-    <h2>📄 Téléchargements & Liens</h2>
+    <h2>Objectifs</h2>
+    <ul class="project-list">
+      <li>Modéliser l’écoulement autour d’un profil d’aile (type NACA symétrique)</li>
+      <li>Calculer portance et traînée en fonction de l’angle d’attaque</li>
+      <li>Étudier l’influence de l’inclinaison des ailes sur le rendement global</li>
+      <li>Comparer un drone multirotor classique et une architecture hybride</li>
+    </ul>
+
+    <h2>Modèles et outils utilisés</h2>
+    <ul class="project-list">
+      <li>Python (NumPy, Matplotlib, SciPy)</li>
+      <li>Méthode des panneaux pour la modélisation aérodynamique</li>
+      <li>C++ (commande de servomoteurs et systèmes embarqués)</li>
+      <li>SolidWorks (simulation CFD et validation qualitative)</li>
+    </ul>
+
+    <h2>Hypothèses de modélisation</h2>
+    <ul class="project-list">
+      <li>Air assimilé à un fluide incompressible</li>
+      <li>Turbulences négligées dans un premier modèle</li>
+      <li>Écoulement stationnaire autour du profil</li>
+    </ul>
+
+    <div class="download-section">
+      <a href="TIPE présentation.pdf" class="download-btn" download>
+        Télécharger le rapport TIPE (PDF)
+      </a>
+    </div>
+
+    <h2>Résultats et visualisations</h2>
+
+    <section class="galerie">
+      <div class="img-grid">
+
+        <div class="img-box">
+          <img src="TIPE présentation_page-0005.jpg" alt="">
+        </div>
+
+        <div class="img-box">
+          <img src="TIPE présentation_page-0006.jpg" alt="">
+        </div>
+
+        <div class="img-box large">
+          <img src="TIPE présentation_page-0007.jpg" alt="">
+        </div>
+
+        <div class="img-box">
+          <img src="TIPE présentation_page-0008.jpg" alt="">
+        </div>
+
+        <div class="img-box">
+          <img src="TIPE présentation_page-0009.jpg" alt="">
+        </div>
+
+      </div>
+    </section>
+
+    <h2>Interprétation</h2>
+    <p>
+      Les simulations montrent que l’ajout d’ailes fixes modifie significativement la distribution
+      des forces aérodynamiques. Une amélioration du rendement est observée dans certaines
+      configurations, notamment pour des angles d’inclinaison optimisés, mettant en évidence un
+      compromis entre portance et traînée.
+    </p>
+
+    <h2>Accès aux ressources</h2>
     <div class="downloads">
-      <a href="https://github.com/DrPepito/Projet_souflerie1" class="btn">📁 Télécharger le code Python</a>
-      <a href="TIPE présentation.pdf" class="btn">📊 Rapport TIPE (PDF)</a>
-      <a href="https://github.com/DrPepito/Projet_souflerie1" class="btn">🐙 GitHub</a>
+
+      <a href="https://github.com/DrPepito/Projet_souflerie1" class="btn">
+        Code Python (GitHub)
+      </a>
+
+      <a href="TIPE présentation.pdf" class="btn">
+        Rapport complet (PDF)
+      </a>
+
+      <a href="https://github.com/DrPepito/Projet_souflerie1" class="btn">
+        Repository GitHub
+      </a>
 
     </div>
+
   </div>
 </section>
 
 <footer class="site-footer">
   <p>© 2025 Zakaria Boschetti</p>
 </footer>
+
 </body>
 </html>
