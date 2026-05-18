@@ -511,7 +511,30 @@ body {
 }
 
 
+.btn-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
 
+.btn-icon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background: #1f2937;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.btn-icon:hover {
+  transform: translateY(-2px);
+  background: #374151;
+}
 
 
 
