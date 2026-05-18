@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accéléromètre VHDL | Zakaria Boschetti</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo-container">
+    <img src="https://media.newyorker.com/photos/5a95a5b13d9089123c9fdb7e/1:1/w_3289,h_3289,c_limit/Petrusich-Dont-Mess-with-the-Birds.jpg" class="profile-pic">
+  </div>
+  <nav class="navbar">
+    <ul>
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../projets.html">Projets</a></li>
+      <li><a href="../contact.html">Contacts</a></li>
+      <li><a href="../fichiers.html">Fichiers</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="project-wrapper">
+  <h1 class="project-title">Accéléromètre 3 Axes — VHDL sur FPGA</h1>
+  <div class="project-content">
+    <img src="../fpga accelerometre.jpg" alt="Accéléromètre VHDL FPGA" class="project-main-img">
+
+    <p class="intro">
+      Réalisation d'un accéléromètre 3 axes (X, Y, Z) entièrement décrit en VHDL et implémenté 
+      sur FPGA. Le système acquiert les données d'accélération, les traite en logique câblée 
+      et les restitue en temps réel sur la sortie.
+    </p>
+
+    <h2>🎯 Objectifs du Projet</h2>
+    <ul class="project-list">
+      <li>Acquérir les données d'un accéléromètre 3 axes via interface SPI ou I2C.</li>
+      <li>Décrire l'ensemble du traitement en VHDL (logique câblée, sans processeur).</li>
+      <li>Afficher les valeurs X, Y, Z en temps réel.</li>
+      <li>Synthétiser et implémenter le design sur FPGA.</li>
+    </ul>
+
+    <h2>📌 Matériel Utilisé
+    <ul class="project-list">
+      <li>FPGA (Xilinx ou Altera)</li>
+      <li>Capteur accéléromètre 3 axes (ADXL345 ou MPU-6050)</li>
+      <li>Interface SPI / I2C</li>
+      <li>Affichage 7 segments ou UART</li>
+    </ul>
+
+    <h2>🛠️ Langage & Outils</h2>
+    <ul class="project-list">
+      <li>VHDL — description matérielle complète</li>
+      <li>Vivado / Quartus pour la synthèse et l'implémentation</li>
+      <li>Simulation des composants avec testbench VHDL</li>
+      <li>Protocole SPI/I2C décrit en VHDL</li>
+    </ul>
+
+    <h2>📷 Images du Projet</h2>
+    <div class="project-gallery">
+      <a href="../fpga accelerometre.jpg" class="lightbox-link">
+        <img src="../fpga accelerometre.jpg" alt="FPGA vue générale">
+      </a>
+      <a href="../fpga accelerometre.jpg" class="lightbox-link">
+        <img src="../fpga accelerometre.jpg" alt="Schéma RTL">
+      </a>
+      <a href="../fpga accelerometre.jpg" class="lightbox-link">
+        <img src="../fpga accelerometre.jpg" alt="Simulation testbench">
+      </a>
+    </div>
+
+    <h2>⚙️ Fonctionnement</h2>
+    <p>
+      Le contrôleur SPI/I2C décrit en VHDL initialise le capteur puis lit cycliquement 
+      les registres de données X, Y et Z. Les valeurs brutes sont converties en unités 
+      physiques (mg) par un bloc de mise à l'échelle câblé. Les résultats sont transmis 
+      en temps réel via UART ou affichés sur les 7 segments de la carte FPGA.
+    </p>
+
+    <h2>📄 Téléchargements & Liens</h2>
+    <div class="downloads">
+      <a href="#" class="btn">📁 Télécharger le code VHDL</a>
+      <a href="#" class="btn">📊 Rapport technique (PDF)</a>
+      <a href="#" class="btn">🐙 GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>© 2025 Zakaria Boschetti</p>
+</footer>
+</body>
+</html>

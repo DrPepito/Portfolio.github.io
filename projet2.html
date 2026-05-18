@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soufflerie Numérique TIPE | Zakaria Boschetti</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo-container">
+    <img src="https://media.newyorker.com/photos/5a95a5b13d9089123c9fdb7e/1:1/w_3289,h_3289,c_limit/Petrusich-Dont-Mess-with-the-Birds.jpg" class="profile-pic">
+  </div>
+  <nav class="navbar">
+    <ul>
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../projets.html">Projets</a></li>
+      <li><a href="../contact.html">Contacts</a></li>
+      <li><a href="../fichiers.html">Fichiers</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="project-wrapper">
+  <h1 class="project-title">Modélisation d'Ailes & Soufflerie Numérique (TIPE — CPGE PSI)</h1>
+  <div class="project-content">
+    <img src="../souflerie.jpg" alt="Soufflerie numérique" class="project-main-img">
+
+    <p class="intro">
+      Simulation numérique de l'écoulement d'air autour de profils d'ailes afin d'analyser 
+      la portance et la traînée. Étude d'optimisation énergétique d'un drone hybride combinant 
+      multi-rotors et ailes fixes, réalisée dans le cadre du TIPE en CPGE PSI.
+    </p>
+
+    <h2>🎯 Objectifs du Projet</h2>
+    <ul class="project-list">
+      <li>Simuler numériquement l'écoulement d'air autour de profils NACA.</li>
+      <li>Calculer et analyser la portance et la traînée en fonction de l'angle d'attaque.</li>
+      <li>Optimiser la géométrie d'aile pour un drone hybride multi-rotors / ailes fixes.</li>
+      <li>Comparer les résultats simulés avec les données théoriques.</li>
+    </ul>
+
+    <h2>📌 Outils & Technologies</h2>
+    <ul class="project-list">
+      <li>Python (simulation, traitement des données, visualisation)</li>
+      <li>C++ (calculs numériques haute performance)</li>
+      <li>Méthode des panneaux pour la modélisation aérodynamique</li>
+      <li>Matplotlib / NumPy / SciPy</li>
+    </ul>
+
+    <h2>🛠️ Bibliothèques Python</h2>
+    <ul class="project-list">
+      <li><code>numpy</code> — calculs matriciels et vectoriels</li>
+      <li><code>matplotlib</code> — visualisation des écoulements et courbes</li>
+      <li><code>scipy</code> — résolution des systèmes d'équations</li>
+    </ul>
+
+    <h2>📷 Images du Projet</h2>
+    <div class="project-gallery">
+      <a href="../souflerie.jpg" class="lightbox-link">
+        <img src="../souflerie.jpg" alt="Simulation écoulement">
+      </a>
+      <a href="../souflerie.jpg" class="lightbox-link">
+        <img src="../souflerie.jpg" alt="Profil NACA">
+      </a>
+      <a href="../souflerie.jpg" class="lightbox-link">
+        <img src="../souflerie.jpg" alt="Courbe portance/traînée">
+      </a>
+    </div>
+
+    <h2>⚙️ Fonctionnement</h2>
+    <p>
+      Le programme génère un maillage autour du profil d'aile choisi, puis applique la méthode 
+      des panneaux pour calculer la distribution de pression et en déduire la portance et la traînée. 
+      Les résultats sont visualisés sous forme de champs de vitesse et de courbes de coefficient 
+      aérodynamique en fonction de l'angle d'attaque. L'optimisation du drone hybride compare 
+      plusieurs configurations géométriques pour minimiser la consommation énergétique en vol.
+    </p>
+
+    <h2>📄 Téléchargements & Liens</h2>
+    <div class="downloads">
+      <a href="#" class="btn">📁 Télécharger le code Python</a>
+      <a href="#" class="btn">📊 Rapport TIPE (PDF)</a>
+      <a href="#" class="btn">🐙 GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>© 2025 Zakaria Boschetti</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bras Robotique ESP32 | Zakaria Boschetti</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo-container">
+    <img src="https://media.newyorker.com/photos/5a95a5b13d9089123c9fdb7e/1:1/w_3289,h_3289,c_limit/Petrusich-Dont-Mess-with-the-Birds.jpg" class="profile-pic">
+  </div>
+  <nav class="navbar">
+    <ul>
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../projets.html">Projets</a></li>
+      <li><a href="../contact.html">Contacts</a></li>
+      <li><a href="../fichiers.html">Fichiers</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="project-wrapper">
+  <h1 class="project-title">Bras Robotique 3 Axes — ESP32 en C++</h1>
+  <div class="project-content">
+    <img src="../bras_robotique.jpg" alt="Bras robotique ESP32" class="project-main-img">
+
+    <p class="intro">
+      Bras robotique à 3 axes conçu et programmé en C++ pur, piloté par un microcontrôleur ESP32. 
+      Le système assure le contrôle précis de chaque articulation et renvoie en 
+      <strong>TEMPS RÉEL</strong> l'état de chaque servo (angle, position, statut) 
+      via le moniteur série — sans aucune bibliothèque tierce.
+    </p>
+
+    <h2>🎯 Objectifs du Projet</h2>
+    <ul class="project-list">
+      <li>Contrôler 3 servomoteurs indépendants avec précision angulaire.</li>
+      <li>Générer les signaux PWM directement via les registres ESP32 (sans bibliothèque).</li>
+      <li>Assurer un retour temps réel de l'état de chaque articulation via Serial.</li>
+      <li>Implémenter des séquences de mouvement fluides et reproductibles.</li>
+    </ul>
+
+    <h2>📌 Matériel Utilisé</h2>
+    <ul class="project-list">
+      <li>ESP32 DevKit</li>
+      <li>3× Servomoteurs (Base GPIO 13, Épaule GPIO 14, Coude GPIO 15)</li>
+      <li>Alimentation 5V externe</li>
+      <li>Câblage et structure imprimée en 3D</li>
+    </ul>
+
+    <h2>🛠️ Technique — Sans Bibliothèque</h2>
+    <ul class="project-list">
+      <li>PWM généré via <code>ledcSetup</code>, <code>ledcAttachPin</code>, <code>ledcWrite</code> (API native ESP32)</li>
+      <li>Résolution 16 bits à 50 Hz — impulsions 500µs à 2500µs</li>
+      <li>Mouvement doux degré par degré avec affichage temps réel</li>
+      <li>Commandes interactives via Serial Monitor (séquence / repos)</li>
+    </ul>
+
+    <h2>📷 Images du Projet</h2>
+    <div class="project-gallery">
+      <a href="../bras_robotique.jpg" class="lightbox-link">
+        <img src="../bras_robotique.jpg" alt="Bras robotique vue générale">
+      </a>
+      <a href="../bras_robotique.jpg" class="lightbox-link">
+        <img src="../bras_robotique.jpg" alt="Détail articulations">
+      </a>
+      <a href="../bras_robotique.jpg" class="lightbox-link">
+        <img src="../bras_robotique.jpg" alt="ESP32 et câblage">
+      </a>
+    </div>
+
+    <h2>⚙️ Fonctionnement</h2>
+    <p>
+      Au démarrage, les 3 servos se centrent à 90° puis enchaînent une séquence de démonstration. 
+      Le Serial Monitor (115200 bauds) affiche en temps réel l'angle de chaque articulation degré 
+      par degré. L'utilisateur peut envoyer la commande <code>1</code> pour relancer la séquence 
+      ou <code>2</code> pour revenir en position repos.
+    </p>
+
+    <h2>📄 Téléchargements & Liens</h2>
+    <div class="downloads">
+      <a href="#" class="btn">📁 Télécharger le code</a>
+      <a href="#" class="btn">🔧 Modèle 3D</a>
+      <a href="#" class="btn">🐙 GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>© 2025 Zakaria Boschetti</p>
+</footer>
+</body>
+</html>

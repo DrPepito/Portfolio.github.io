@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plateforme Tournante | Zakaria Boschetti</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="logo-container">
+    <img src="https://media.newyorker.com/photos/5a95a5b13d9089123c9fdb7e/1:1/w_3289,h_3289,c_limit/Petrusich-Dont-Mess-with-the-Birds.jpg" class="profile-pic">
+  </div>
+  <nav class="navbar">
+    <ul>
+      <li><a href="../index.html">Accueil</a></li>
+      <li><a href="../projets.html">Projets</a></li>
+      <li><a href="../contact.html">Contacts</a></li>
+      <li><a href="../fichiers.html">Fichiers</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="project-wrapper">
+  <h1 class="project-title">Plateforme Tournante — Arduino Nano</h1>
+  <div class="project-content">
+    <img src="../platforme1.jpg" alt="Plateforme tournante" class="project-main-img">
+
+    <p class="intro">
+      Réalisation d'une plateforme tournante destinée à la présentation de produits de beauté 
+      et de parfums. Le système assure une rotation lente, fluide et silencieuse grâce à un moteur 
+      pas à pas 28BYJ-48 piloté par un Arduino Nano, sans aucune bibliothèque tierce.
+    </p>
+
+    <h2>🎯 Objectifs du Projet</h2>
+    <ul class="project-list">
+      <li>Réaliser une rotation continue, douce et silencieuse pendant 60 secondes.</li>
+      <li>Contrôler précisément la vitesse et le sens de rotation.</li>
+      <li>Piloter le moteur pas à pas en demi-pas pour un mouvement fluide.</li>
+      <li>Couper automatiquement les bobines à l'arrêt pour éviter la chauffe.</li>
+    </ul>
+
+    <h2>📌 Matériel Utilisé</h2>
+    <ul class="project-list">
+      <li>Arduino Nano (ATmega328P)</li>
+      <li>Moteur pas à pas 28BYJ-48</li>
+      <li>Module driver ULN2003</li>
+      <li>Alimentation 5V</li>
+      <li>Plateau rotatif imprimé en 3D</li>
+    </ul>
+
+    <h2>🛠️ Technique — Sans Bibliothèque</h2>
+    <ul class="project-list">
+      <li>Séquence demi-pas (8 étapes) appliquée directement aux GPIO</li>
+      <li>IN1→D8, IN2→D9, IN3→D10, IN4→D11</li>
+      <li>Délai inter-pas : 3500µs (~3 RPM) — adapté au poids du plateau</li>
+      <li>Minuterie via <code>millis()</code> pour une durée précise de 60 secondes</li>
+      <li>Arrêt automatique des bobines après rotation</li>
+    </ul>
+
+    <h2>📷 Images du Projet</h2>
+    <div class="project-gallery">
+      <a href="../platforme1.jpg" class="lightbox-link">
+        <img src="../platforme1.jpg" alt="Plateforme vue générale">
+      </a>
+      <a href="../platforme1.jpg" class="lightbox-link">
+        <img src="../platforme1.jpg" alt="Détail moteur">
+      </a>
+      <a href="../platforme1.jpg" class="lightbox-link">
+        <img src="../platforme1.jpg" alt="Présentation produit">
+      </a>
+    </div>
+
+    <h2>⚙️ Fonctionnement</h2>
+    <p>
+      Au démarrage, l'Arduino initialise les 4 sorties GPIO et applique la séquence demi-pas 
+      en continu pendant exactement 60 secondes, mesurées par <code>millis()</code>. 
+      La vitesse de rotation douce (~3 RPM) est idéale pour une présentation visuelle de produits. 
+      À l'issue des 60 secondes, toutes les bobines sont coupées et le moteur s'arrête sans vibration.
+    </p>
+
+    <h2>📄 Téléchargements & Liens</h2>
+    <div class="downloads">
+      <a href="#" class="btn">📁 Télécharger le code</a>
+      <a href="#" class="btn">🔧 Modèle 3D du plateau</a>
+      <a href="#" class="btn">🐙 GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>© 2025 Zakaria Boschetti</p>
+</footer>
+</body>
+</html>
