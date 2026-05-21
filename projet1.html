@@ -136,5 +136,32 @@
 <footer class="site-footer">
   <p>© 2025 Zakaria Boschetti</p>
 </footer>
+
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+
+  <script>
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+
+document.querySelectorAll(".project-gallery img, .project-main-img").forEach(img => {
+  img.addEventListener("click", (e) => {
+    lightboxImg.src = img.src;
+    lightbox.classList.add("active");
+  });
+});
+
+// fermer uniquement si on clique sur le fond
+lightbox.addEventListener("click", (e) => {
+  if (e.target !== lightboxImg) {
+    lightbox.classList.remove("active");
+  }
+});
+</script>
+  
 </body>
 </html>
