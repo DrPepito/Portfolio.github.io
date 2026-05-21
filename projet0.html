@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fraiseuse CNC | Zakaria Boschetti</title>
+<title>EvalPong | Zakaria Boschetti</title>
 <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.ico">
+<link rel="icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="logo.png">
 <meta name="theme-color" content="#1f2937">
 </head>
+
 <body>
+
 <header class="site-header">
   <div class="logo-container">
     <img src="https://avatars.githubusercontent.com/u/157927243?v=4" class="profile-pic">
@@ -25,116 +27,146 @@
 </header>
 
 <section class="project-wrapper">
-  <h1 class="project-title">Fraiseuse CNC Industrielle 3 Axes</h1>
+
+  <h1 class="project-title">EvalPong – Robot autonome EvalBot (ASM ARM)</h1>
+
   <div class="project-content">
-    <img src="cncenmarcheavecjs.jpg" alt="Fraiseuse CNC" class="project-main-img">
+
+    <img src="evalpong.jpg" alt="EvalBot projet EvalPong" class="project-main-img">
 
     <p class="intro">
-      Conception et développement complet d'une fraiseuse CNC industrielle 3 axes avec contrôleur embarqué 
-      programmé en C++. Le projet intègre le pilotage de moteurs pas à pas, le motion control en temps réel 
-      et les sécurités machine. Réalisation complète de la chaîne électronique et mécanique.
+      Conception et développement d’un système autonome inspiré du jeu Pong, implémenté sur robot EvalBot.
+      Le robot agit comme une “balle intelligente” évoluant dans une arène, avec gestion des collisions,
+      des scores et des comportements pseudo-aléatoires. L’ensemble du projet est réalisé en assembleur ARM
+      afin de contrôler directement les registres matériels, GPIO et PWM.
     </p>
 
-    <h2> Objectifs du Projet</h2>
+    <h2>🎯 Objectifs du projet</h2>
     <ul class="project-list">
-      <li>Concevoir une fraiseuse CNC 3 axes fonctionnelle.</li>
-      <li>Développer un contrôleur embarqué en C++ pour le pilotage des moteurs.</li>
-      <li>Implémenter un motion control temps réel avec interpolation des trajectoires.</li>
-      <li>Intégrer les sécurités machine (fin de course, arrêt d'urgence).</li>
-      <li>Réaliser la chaîne électronique complète (drivers, alimentation, câblage).</li>
+      <li>Créer un comportement autonome inspiré du jeu Pong.</li>
+      <li>Gérer les déplacements et collisions du robot en temps réel.</li>
+      <li>Implémenter un système de score pour deux joueurs.</li>
+      <li>Exploiter les GPIO, PWM et SysTick en programmation bas niveau.</li>
+      <li>Ajouter un comportement pseudo-aléatoire lors des rebonds.</li>
     </ul>
 
-    <h2> Matériel Utilisé</h2>
-    <ul class="project-list">
-      <li>Microcontrôleur embarqué (C++)</li>
-      <li>Moteurs pas à pas NEMA 23</li>
-      <li>Drivers moteurs TB6600</li>
-      <li>Fins de course mécaniques</li>
-      <li>Alimentation 24V industrielle</li>
-      <li>Structure aluminium profilé 40x40</li>
-      <li>Broche de fraisage 500W</li>
-    </ul>
-
-    <h2> Bibliothèques & Outils</h2>
-    <ul class="project-list">
-      <li>C++ embarqué (sans bibliothèque tierce)</li>
-      <li>Protocole G-code pour les trajectoires</li>
-      <li>Fusion 360 pour la conception mécanique</li>
-    </ul>
-    
-    <h2>Vidéos</h2>
-
-      <div class="img-box">
-        <video controls class="project-video">
-          <source src="cnc_running.mp4" type="video/mp4">
-        </video>
-      </div>
-      
-      <div class="img-box">
-        <video controls class="project-video">
-          <source src="algo_cnc_tempreel.mp4" type="video/mp4">
-        </video>
-      </div>
-
-    
-    <h2> Images du Projet</h2>
-      <div class="project-gallery">
-        <div class="img-box">
-          <img src="IMG_7928.JPG" alt="">
-        </div>
-      
-        <div class="img-box">
-          <img src="IMG_7933.JPG" alt="">
-        </div>
-      
-        <div class="img-box">
-          <img src="IMG_7935.JPG" alt="">
-        </div>
-      
-        <div class="img-box">
-          <img src="IMG_7939.JPG" alt="">
-        </div>
-      
-        <div class="img-box">
-          <img src="IMG_7942.JPG" alt="">
-        </div>
-
-        <div class="img-box">
-          <img src="IMG_20260521_131118.jpg" alt="">
-        </div>
-
-        <div class="img-box">
-          <img src="IMG_20260521_125750.jpg" alt="">
-        </div>
-
-
-        <div class="img-box">
-          <img src="cncimagepc.jpg" alt="">
-        </div>
-      
-
-
-        
-      </div>
-
-    <h2> Fonctionnement</h2>
+    <h2>🧠 Principe du système</h2>
     <p>
-      Le contrôleur embarqué interprète les fichiers G-code et génère en temps réel les impulsions 
-      de pas pour chaque axe. L'interpolation linéaire et circulaire permet des trajectoires fluides 
-      et précises. Les sécurités machine coupent immédiatement l'alimentation des moteurs en cas 
-      de dépassement de course ou d'appui sur l'arrêt d'urgence.
+      Le robot démarre dans une direction aléatoire, se déplace dans l’arène et rebondit sur les obstacles.
+      Lorsqu’il entre dans une zone “but”, un point est attribué à l’adversaire. Le jeu s’arrête lorsqu’un
+      joueur atteint 5 points.
     </p>
 
-    <h2>📄 Téléchargements & Liens</h2>
+    <h2>🧩 Architecture du projet</h2>
+    <ul class="project-list">
+      <li><b>Module moteur :</b> contrôle PWM, direction et collisions</li>
+      <li><b>Module capteurs :</b> lecture des bumpers (GPIOE)</li>
+      <li><b>Module score :</b> gestion des boutons et affichage LED</li>
+      <li><b>Module temps réel :</b> SysTick + temporisations</li>
+    </ul>
+
+    <h2>⚙️ Matériel utilisé</h2>
+    <ul class="project-list">
+      <li>Robot EvalBot (LM3S9B92 Cortex-M3)</li>
+      <li>3 piles d’alimentation</li>
+      <li>Moteurs DC + pont en H DRV8801</li>
+      <li>Bumpers mécaniques (GPIOE)</li>
+      <li>LEDs intégrées (GPIOF)</li>
+      <li>Boutons utilisateurs (GPIOD)</li>
+    </ul>
+
+    <h2>💻 Implémentation logicielle</h2>
+    <ul class="project-list">
+      <li>Programmation 100% assembleur ARM</li>
+      <li>Configuration directe des registres GPIO / PWM</li>
+      <li>Utilisation du SysTick comme base de temps et source pseudo-aléatoire</li>
+      <li>Gestion événementielle des collisions (interrupt-like polling)</li>
+      <li>Anti-rebond logiciel sur entrées mécaniques</li>
+    </ul>
+
+    <h2>🎮 Fonctionnement</h2>
+    <p>
+      Le programme initialise les ports GPIO et les modules PWM, puis lance les moteurs.
+      Le robot avance en continu et réagit aux collisions :
+      <br><br>
+      • Bumper gauche → rotation droite<br>
+      • Bumper droit → rotation gauche<br>
+      • Double contact → demi-tour (180°)<br><br>
+      Les boutons utilisateurs permettent d’incrémenter les scores,
+      affichés via les LEDs PF4 et PF5.
+    </p>
+
+    <h2> Résultats expérimentaux</h2>
+    <ul class="project-list">
+      <li>Déplacement fluide et stable via PWM matériel</li>
+      <li>Réaction aux collisions &lt; 100 ms</li>
+      <li>Comportement pseudo-aléatoire validé</li>
+      <li>Score fonctionnel jusqu’à 5 points</li>
+      <li>Arrêt automatique des moteurs en fin de partie</li>
+      
+    </ul>
+
+
+        <h2> Rapport et présentation</h2>
+    <ul class="project-list">
+
+      <div class="downloads">
+    
+        <a href="Rapport-ProjetPong.pdf" class="btn" target="_blank">
+        📘 Rapport PDF
+      </a>
+    
+      <a href="PreC3%A9sentation-ProjetPong.pdf" class="btn" target="_blank">
+        📊 PowerPoint PDF
+      </a>
+
+      
+      
+    </ul>
+
+
+  
+
+    <h2>🖼️ Galerie</h2>
+    <div class="project-gallery">
+
+      <div class="img-box">
+        <img src="eval1.jpg" alt="">
+      </div>
+
+      <div class="img-box">
+        <img src="eval2.jpg" alt="">
+      </div>
+
+      <div class="img-box">
+        <img src="eval3.jpg" alt="">
+      </div>
+
+      <div class="img-box">
+        <img src="eval4.jpg" alt="">
+      </div>
+
+    </div>
+
+    <h2>📄 Analyse technique</h2>
+    <p>
+      Le projet repose sur une architecture bas niveau exploitant directement les registres du microcontrôleur.
+      Le PWM assure le contrôle précis des moteurs, tandis que le SysTick fournit une base de temps stable
+      et une source d’aléa. Les GPIO sont utilisés en mode événementiel pour détecter les collisions et les inputs utilisateurs.
+    </p>
+
+    <h2>📁 Téléchargements & Liens</h2>
     <div class="downloads">
-      <a href="#" class="btn">📁 Télécharger le code</a>
+      <a href="#" class="btn">📁 Code Assembleur</a>
       <a href="#" class="btn">🐙 GitHub</a>
     </div>
+
   </div>
 </section>
 
 <footer class="site-footer">
-  <p>© 2025 Zakaria Boschetti</p>
+  <p>© 2026 Zakaria Boschetti</p>
 </footer>
+
 </body>
 </html>
