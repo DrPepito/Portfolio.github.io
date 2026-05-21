@@ -24,6 +24,12 @@ body {
 }
 
 
+.project-video {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 12px;
+}
+
 
 /* HEADER */
 .site-header {
