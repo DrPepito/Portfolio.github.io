@@ -31,6 +31,57 @@ body {
 }
 
 
+
+
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s ease;
+  z-index: 9999;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  transform: scale(0.95);
+  transition: 0.2s ease;
+  border-radius: 10px;
+}
+
+.lightbox.active img {
+  transform: scale(1);
+}
+
+/* effet hover sur galerie */
+.project-gallery img {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.project-gallery img:hover {
+  transform: scale(1.03);
+}
+
+
+
+
+
+
+
+
+
 /* HEADER */
 .site-header {
   position: sticky;
