@@ -4,16 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Essaim de Drones IA | Zakaria Boschetti</title>
+
 <link rel="stylesheet" href="style.css">
 <link rel="icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="logo.png">
+
 <meta name="theme-color" content="#1f2937">
+<meta name="description" content="Projet de drones autonomes, IA embarquée, systèmes ARM / STM32, simulateur de vol FPV et développement avionique en Python et C++.">
 </head>
+
 <body>
+
 <header class="site-header">
   <div class="logo-container">
     <img src="https://avatars.githubusercontent.com/u/157927243?v=4" class="profile-pic">
   </div>
+
   <nav class="navbar">
     <ul>
       <li><a href="index.html">Accueil</a></li>
@@ -25,61 +31,277 @@
 </header>
 
 <section class="project-wrapper">
-  <h1 class="project-title">🚧 EN COURS — Essaim de Drones de Surveillance avec IA</h1>
+
+  <h1 class="project-title">
+    🚧 EN COURS — Essaim de Drones de Surveillance avec IA
+  </h1>
+
   <div class="project-content">
-    <img src="https://www.bfmtv.com/comparateur/wp-content/uploads/2020/09/header_drone-avec-cam%C3%A9ra_mobile.jpg" alt="Drone de surveillance" class="project-main-img">
+
+    <img
+      src="https://www.bfmtv.com/comparateur/wp-content/uploads/2020/09/header_drone-avec-cam%C3%A9ra_mobile.jpg"
+      alt="Drone de surveillance"
+      class="project-main-img"
+    >
 
     <p class="intro">
-      Développement d'un essaim de drones de surveillance autonomes intégrant de l'intelligence 
-      artificielle pour la détection d'objets, la coordination inter-drones et la navigation 
-      automatisée. Projet en cours de développement.
+      Développement d’un système de drones autonomes intégrant intelligence artificielle,
+      systèmes embarqués ARM / STM32, vision embarquée et simulation de vol avancée.
+      Le projet combine électronique, IA, avionique, contrôle temps réel et interfaces
+      de supervision inspirées des HUD militaires modernes.
     </p>
 
+    <!-- ========================================================= -->
+    <!-- OBJECTIFS -->
+    <!-- ========================================================= -->
+
     <h2>🎯 Objectifs du Projet</h2>
+
     <ul class="project-list">
-      <li>Concevoir une flotte de drones capables de se coordonner de manière autonome.</li>
-      <li>Intégrer un module IA embarqué pour la détection et la reconnaissance d'objets.</li>
-      <li>Implémenter des algorithmes de navigation et d'évitement d'obstacles.</li>
-      <li>Développer une interface de supervision de l'essaim en temps réel.</li>
+      <li>Concevoir une flotte de drones capables de se coordonner de manière autonome</li>
+      <li>Développer une architecture embarquée basée sur ESP32 / ARM / STM32</li>
+      <li>Intégrer un module IA embarqué pour la détection et la reconnaissance d’objets</li>
+      <li>Implémenter des algorithmes de navigation et d’évitement d’obstacles</li>
+      <li>Développer un système de supervision temps réel type avionique militaire</li>
+      <li>Créer un simulateur de vol complet inspiré des contrôleurs FPV modernes</li>
+      <li>Mettre en place une communication inter-drones sécurisée</li>
+      <li>Préparer une future architecture HIL (Hardware In The Loop)</li>
     </ul>
 
-    <h2>📌 Technologies Envisagées</h2>
+    <!-- ========================================================= -->
+    <!-- TECHNOLOGIES -->
+    <!-- ========================================================= -->
+
+    <h2>⚙️ Technologies Utilisées / Envisagées</h2>
+
     <ul class="project-list">
-      <li>ESP32 / Raspberry Pi pour le contrôle embarqué</li>
-      <li>Caméra embarquée avec traitement vision (OpenCV)</li>
-      <li>Intelligence artificielle (détection YOLO)</li>
-      <li>Communication inter-drones (WiFi mesh / LoRa)</li>
-      <li>Python pour le traitement IA</li>
-      <li>C++ pour le firmware bas niveau</li>
+      <li>Python (simulation, IA, télémétrie, traitement temps réel)</li>
+      <li>C / C++ embarqué bas niveau</li>
+      <li>PyQt6 pour le HUD avionique et les interfaces temps réel</li>
+      <li>ESP32 / STM32 / ARM Cortex</li>
+      <li>OpenCV pour la vision embarquée</li>
+      <li>YOLO pour la détection IA</li>
+      <li>Communication WiFi Mesh / LoRa / UDP</li>
+      <li>Architecture PID multicouche</li>
+      <li>Simulation physique drone temps réel</li>
+      <li>Interfaces inspirées des HUD militaires et FPV DJI</li>
     </ul>
+
+    <!-- ========================================================= -->
+    <!-- SIMULATEUR -->
+    <!-- ========================================================= -->
+
+    <h2>🧠 Développement du Simulateur de Vol Drone</h2>
+
+    <p>
+      Depuis le début du projet, nous avons conçu un simulateur de vol de drone complet
+      en Python avec PyQt6, structuré en plusieurs modules indépendants afin d’obtenir
+      une architecture claire, maintenable et évolutive.
+    </p>
+
+    <p>
+      Le cœur du système repose sur un état centralisé du drone
+      (<strong>DroneState</strong>) regroupant l’ensemble des données temps réel :
+      position 3D, vitesses, attitude (roll/pitch/yaw), état batterie,
+      modes de vol, commandes moteurs et télémétrie complète.
+    </p>
+
+    <p>
+      À cela s’ajoute un moteur physique dédié
+      (<strong>physics_engine</strong>) simulant le comportement réel d’un quadricoptère
+      avec prise en compte de la gravité, de l’inertie, de la poussée moteur,
+      des accélérations et des dynamiques de rotation.
+    </p>
+
+    <p>
+      Le système fonctionne sur une boucle temps réel à 50 FPS
+      (tick de 20 ms) afin de reproduire un comportement fluide
+      proche d’un contrôleur de vol réel.
+    </p>
+
+    <!-- ========================================================= -->
+    <!-- PID -->
+    <!-- ========================================================= -->
+
+    <h2>🎮 Contrôle de Vol & PID</h2>
+
+    <p>
+      Nous avons développé un système de contrôle avancé basé sur plusieurs
+      correcteurs PID (<strong>FlightPIDs</strong>) permettant de gérer :
+    </p>
+
+    <ul class="project-list">
+      <li>Le maintien automatique d’altitude</li>
+      <li>La stabilisation roll / pitch</li>
+      <li>Le contrôle du yaw et du cap</li>
+      <li>Le suivi de vitesse horizontale</li>
+      <li>Le hover stable</li>
+      <li>Les transitions de vol fluides</li>
+    </ul>
+
+    <p>
+      Le module <strong>KeyboardController</strong> traduit les commandes clavier
+      AZERTY en véritables consignes de vol :
+      décollage, atterrissage, déplacement, yaw,
+      retour home, urgence et reset système.
+    </p>
+
+    <!-- ========================================================= -->
+    <!-- HUD -->
+    <!-- ========================================================= -->
+
+    <h2>🛩️ Interface HUD Avionique</h2>
+
+    <p>
+      L’interface graphique a été pensée comme un véritable HUD de drone FPV /
+      avionique militaire moderne.
+    </p>
+
+    <ul class="project-list">
+      <li>Horizon artificiel dynamique</li>
+      <li>Radar de positionnement 2D</li>
+      <li>Flight Path Marker (FPM)</li>
+      <li>Jauges altitude / throttle</li>
+      <li>Barres moteurs et batterie</li>
+      <li>Graphes temps réel</li>
+      <li>Widget d’orientation 3D</li>
+      <li>Télémétrie complète</li>
+      <li>Mode jour / nuit dynamique</li>
+    </ul>
+
+    <!-- ========================================================= -->
+    <!-- V2 -->
+    <!-- ========================================================= -->
+
+    <h2>🚀 Évolution du HUD — Version V2</h2>
+
+    <ul class="project-list">
+      <li>Lissage exponentiel EMA sur toutes les valeurs affichées</li>
+      <li>Réduction des tremblements et du jitter visuel</li>
+      <li>Palette de couleurs optimisée pour le confort visuel</li>
+      <li>Transitions de couleurs fluides</li>
+      <li>Curseur drone avec halo dynamique</li>
+      <li>Réorganisation complète des moteurs</li>
+      <li>Ajout du Flight Path Marker</li>
+    </ul>
+
+    <!-- ========================================================= -->
+    <!-- V3 -->
+    <!-- ========================================================= -->
+
+    <h2>🔥 Évolution du HUD — Version V3</h2>
+
+    <ul class="project-list">
+      <li>Réduction et affinage de la sensibilité yaw</li>
+      <li>Barre vario verticale graduée</li>
+      <li>Effets scanlines style HUD militaire</li>
+      <li>Indicateur glide path d’atterrissage</li>
+      <li>Radar avec distances labellisées</li>
+      <li>Vecteur vitesse séparé du vecteur cap</li>
+      <li>Zone de sécurité rouge au-delà de 25 mètres</li>
+      <li>Alertes clignotantes batterie critique / descente rapide</li>
+      <li>Badge HOLD en hover stable</li>
+      <li>Affichage vitesse peak</li>
+      <li>Calcul intelligent du temps de vol restant</li>
+      <li>Mode jour / nuit dynamique avec la touche J</li>
+    </ul>
+
+    <!-- ========================================================= -->
+    <!-- DEBUG -->
+    <!-- ========================================================= -->
+
+    <h2>🛠️ Optimisations & Corrections</h2>
+
+    <ul class="project-list">
+      <li>Correction des oscillations PID</li>
+      <li>Réduction des mouvements brusques</li>
+      <li>Amélioration du comportement basse vitesse</li>
+      <li>Correction des dérives yaw</li>
+      <li>Optimisation du rendu PyQt6</li>
+      <li>Optimisation des calculs physiques</li>
+      <li>Réduction du jitter graphique</li>
+      <li>Amélioration du système de télémétrie temps réel</li>
+      <li>Correction des bugs clavier press/release</li>
+      <li>Stabilisation générale du simulateur</li>
+    </ul>
+
+    <!-- ========================================================= -->
+    <!-- FUTUR -->
+    <!-- ========================================================= -->
+
+    <h2>📡 Évolutions Futures</h2>
+
+    <ul class="project-list">
+      <li>Communication HIL (Hardware In The Loop)</li>
+      <li>Bridge UDP / Série vers STM32</li>
+      <li>Simulation multi-drones</li>
+      <li>Navigation autonome assistée par IA</li>
+      <li>Vision embarquée temps réel</li>
+      <li>Contrôle type Betaflight / DJI FPV</li>
+      <li>Fusion de capteurs IMU / GPS</li>
+      <li>Mode autonome de surveillance</li>
+    </ul>
+
+    <!-- ========================================================= -->
+    <!-- IMAGES -->
+    <!-- ========================================================= -->
 
     <h2>📷 Images du Projet</h2>
+
     <div class="project-gallery">
+
       <a href="https://www.bfmtv.com/comparateur/wp-content/uploads/2020/09/header_drone-avec-cam%C3%A9ra_mobile.jpg" class="lightbox-link">
-        <img src="https://www.bfmtv.com/comparateur/wp-content/uploads/2020/09/header_drone-avec-cam%C3%A9ra_mobile.jpg" alt="Drone de surveillance">
+        <img
+          src="https://www.bfmtv.com/comparateur/wp-content/uploads/2020/09/header_drone-avec-cam%C3%A9ra_mobile.jpg"
+          alt="Drone de surveillance"
+        >
+      </a>
+
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- AVANCEMENT -->
+    <!-- ========================================================= -->
+
+    <h2>📈 Avancement</h2>
+
+    <p>
+      Le projet est actuellement en phase avancée de développement logiciel.
+      Le simulateur de vol, les systèmes PID, le HUD avionique,
+      les architectures embarquées ARM / STM32 et les premières briques IA
+      sont déjà opérationnels.
+    </p>
+
+    <p>
+      Les prochaines étapes porteront principalement sur :
+    </p>
+
+    <ul class="project-list">
+      <li>L’intégration hardware réelle</li>
+      <li>Les tests HIL</li>
+      <li>La vision embarquée</li>
+      <li>Le pilotage autonome</li>
+      <li>La communication inter-drones</li>
+    </ul>
+
+    <!-- ========================================================= -->
+    <!-- GITHUB -->
+    <!-- ========================================================= -->
+
+    <h2>📄 Liens</h2>
+
+    <div class="downloads">
+      <a href="https://github.com/DrPepito" class="btn">
+        🐙 GitHub (bientôt disponible)
       </a>
     </div>
 
-    <h2>⚙️ Avancement</h2>
-    <p>
-      Ce projet est actuellement en phase de conception et de recherche. 
-      Les premières briques techniques (contrôle de vol via PID , communication (projet 6), vision) 
-      sont en cours d'expérimentation. La page sera mise à jour régulièrement 
-      au fil de l'avancement.
-    </p>
-
-    <h2>⚙️ Mention spéciale</h2>
-
-    
-    <h2>📄 Liens</h2>
-    <div class="downloads">
-      <a href="https://github.com/DrPepito" class="btn">🐙 GitHub (bientôt disponible)</a>
-    </div>
   </div>
 </section>
 
 <footer class="site-footer">
-  <p>© 2025 Zakaria Boschetti</p>
+  <p>© 2026 Zakaria Boschetti</p>
 </footer>
+
 </body>
 </html>
